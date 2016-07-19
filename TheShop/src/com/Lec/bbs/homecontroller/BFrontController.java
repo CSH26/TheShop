@@ -150,10 +150,10 @@ public class BFrontController extends HttpServlet {
 		case ("/complogon.do"):
 			command = new BCompLogonCommand();  // 커맨드  타입 상속
 			command.excute(request, response);	
-			if(session.getAttribute("COMP_LOGIN_CHECK")=="none"){
+			if(session.getAttribute("COMP_LOGIN_CHECK")=="NONE"){
 				viewPage = "CompanyLoginPage.jsp";
-				session.setAttribute("COMP_LOGIN_FLAG","2");
-				session.setAttribute("COMP_LOGIN_RESULT","unaccessible");
+				session.setAttribute("COMP_LOGIN_FLAG","1");
+				session.setAttribute("COMP_LOGIN_RESULT","UN_ACCESSIBLE");
 			}
 			else{
 				viewPage = "company_productlist.do";
@@ -176,22 +176,22 @@ public class BFrontController extends HttpServlet {
 				viewPage = "CustomerJoin.jsp";
 			}
 			else{
-				session.setAttribute("RESULT","no");
-				session.setAttribute("input","1");
+				session.setAttribute("RESULT","NO");
+				session.setAttribute("USER_ID_CHECK_ACCESS_COUNT","1");
 				viewPage = "CustomerJoin.jsp";
 			}
 			break;
 		case ("/compcheck.do"):
 			command = new BCompCheckCommand();  // 커맨드  타입 상속
 			command.excute(request, response);
-			if(session.getAttribute("COMP_CODE_CHECK")=="none"){
-				session.setAttribute("compinput","1");
-				session.setAttribute("COMP_RESULT","ok");
+			if(session.getAttribute("COMP_CODE_CHECK")=="NONE"){
+				session.setAttribute("COMP_ID_CHECK_ACCESS_COUNT","1");
+				session.setAttribute("COMP_RESULT","OK");
 				viewPage = "CompanyJoin.jsp";
 			}
 			else{
-				session.setAttribute("COMP_RESULT","no");
-				session.setAttribute("compinput","1");
+				session.setAttribute("COMP_RESULT","NO");
+				session.setAttribute("COMP_ID_CHECK_ACCESS_COUNT","1");
 				viewPage = "CompanyJoin.jsp";
 			}
 			break;
@@ -206,7 +206,7 @@ public class BFrontController extends HttpServlet {
 			
 			}
 			else if(session.getAttribute("ADMIN_LOGIN_CHECK")=="DENY"){
-				session.setAttribute("ADMIN_LOGIN_FLAG","FAIL");
+				session.setAttribute("ADMIN_LOGIN_FLAG","1");
 				viewPage = "AdminLoginPage.jsp";
 			}
 			break;
@@ -216,9 +216,13 @@ public class BFrontController extends HttpServlet {
 			int compNewItemok = (int) request.getAttribute("COMP_ITEM_INSERT_RESULT");
 			if(compNewItemok==1){
 				viewPage = "company_productlist.do";
+				session.setAttribute("COMP_CREATE_ITEM_DENY","NO");
+				session.setAttribute("COMP_CREATE_ITEM_ACCESS_COUNT","1");
 			}
 			else{
-				viewPage = "Error.jsp";
+				session.setAttribute("COMP_CREATE_ITEM_DENY","YES");
+				session.setAttribute("COMP_CREATE_ITEM_ACCESS_COUNT","1");
+				viewPage = "company_productlist.do";
 			}
 			break;
 		case ("/buy.do"):
@@ -278,12 +282,12 @@ public class BFrontController extends HttpServlet {
 		case ("/company_product_delete.do"):
 			command = new BCompanyDeleteProductCommand();  // 커맨드  타입 상속
 			command.excute(request, response);
-			if(request.getAttribute("COMP_PRODUCT_DEL_RESULT")=="success"){
+			if(request.getAttribute("COMP_PRODUCT_DEL_RESULT")=="SUCCESS"){
 				session.setAttribute("COMPANY_PRODUCT_DELETE_STATE", "YES");
 				viewPage = "Company_ProductUpdateView.jsp";
 			}
 			else {
-				session.setAttribute("COMPANY_PRODUCT_DELETE_STATE", "NO");
+				session.setAttribute("COMPANY_PRODUCT_DELETE_STATE", "DENY");
 				viewPage = "Company_ProductUpdateView.jsp";
 			}
 			break;
@@ -323,19 +327,26 @@ public class BFrontController extends HttpServlet {
 			viewPage = "Admin_ProductList.do";
 			break;
 		case ("/report.do"):
-			command = new BReportCommand(); // 커맨드 타입 상속
+			command = new BReportCommand(); 
 			command.excute(request, response);
 			viewPage = "Admin_Report.jsp";
 			break;
 		case ("/logout.do"):
-			command = new BLogoutcommand(); // 커맨드 타입 상속
+			command = new BLogoutcommand();
 			command.excute(request, response);
-			viewPage = "LoginPage.jsp";
+			viewPage = "AdminLoginPage.jsp";
 			break;
 		case ("/Admin_CompModify.do"):
-			command = new BAdminCompModifyCommand(); // 커맨드 타입 상속
+			command = new BAdminCompModifyCommand(); 
 			command.excute(request, response);
-			viewPage = "Admin_CompList.do";
+			if(request.getAttribute("ADMIN_COMP_MODIFY_RESULT")=="SUCCESS"){
+				session.setAttribute("ADMIN_CHANGED_COMPANY_STATE", "YES");
+				viewPage = "Admin_CompInfo.jsp";
+			}
+			else{
+				session.setAttribute("ADMIN_CHANGED_COMPANY_STATE", "NO");
+				viewPage = "Admin_CompInfo.jsp";
+			}
 			break;
 		default:
 			break;

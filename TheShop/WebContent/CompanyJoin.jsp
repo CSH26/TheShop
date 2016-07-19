@@ -8,9 +8,11 @@
 		
 			alert("등록되지 않은 업체입니다. 가입 할 수 있습니다.");
 			document.compform.compcode.value=a;
+			<%session.setAttribute("COMP_ID_CHECK_ACCESS_COUNT","0");%>
 	}
 	function nonCheck(){
 			alert("이미 등록된 업체입니다.");
+			<%session.setAttribute("COMP_ID_CHECK_ACCESS_COUNT","0");%>
 	}
 	
 </script>
@@ -22,58 +24,55 @@
 <center>
 <br /><br /><br /><br /><br /><br />
 
-<input type="image" src="http://192.168.35.21:8080/TheShop/Company.png"><br /><br />
+<input type="image" src="http://localhost:8180/TheShop/Company.png"><br /><br />
 
 
 <font face="맑은고딕"><br />
 
 <table>
-<tr>
-<form action="compcheck.do" method="post" name="compform">        
-	<td colspan="2" width="5"><font color="black" ><strong>
-	ID<td><input type = "text" align="center" name = "compcode" size = "15"></td><td>
-	<!-- // #부분에는 중복 환인 창으로 넘어가는 주소를 넣어야 함 -->
-	&nbsp; &nbsp; &nbsp;<input type ="submit" name ="orbtn" value = "중복 확인" /></td>
-</form></tr>
-<!-- 중복확인 -->
-
-<form action="writecomp.do" method="post">
 	<tr>
-	<td colspan="2" width="5"><font color="black" ><strong>
-	Password<td><input type = "password" align="center" name = "comppw" size = "10"></td></tr>
+	<form action="compcheck.do" method="post" name="compform">        
+		<td colspan="2" width="5"><font color="black" ><strong>
+		ID<td><input type = "text" align="center" name = "compcode" size = "15"></td><td>
+		<!-- // #부분에는 중복 환인 창으로 넘어가는 주소를 넣어야 함 -->
+		&nbsp; &nbsp; &nbsp;<input type ="submit" name ="orbtn" value = "중복 확인" /></td>
+	</form></tr>
+	<!-- 중복확인 -->
 	
-	<tr>
-	<td colspan="2" ><font color="black"><strong>
-	Company Name<td><input type = "text" name = "compname"  size = "10"></td></tr>
-	
-	<tr>
-	<td colspan="2" ><font color="black"><strong>
-	Address<td><input type = "text" name = "compadd"   size = "20" > </td></tr>
-	
-	<tr>
-	<td colspan="2" ><font color="black"><strong>
-	Tel<td><input type = "text" name = "comptel"   size = "20"> </td></tr>
-	
-	<!-- // #부분에는 로그인 창으로 넘어가는 주소를 넣어야 함 -->
+	<form action="writecomp.do" method="post">
+		<tr>
+		<td colspan="2" width="5"><font color="black" ><strong>
+		Password<td><input type = "password" align="center" name = "comppw" size = "10"></td></tr>
 		
-	<table border = "0">	
-	<tr>
-		<br><br>
-		<td>&nbsp; &nbsp;<td colspan="2"><input type ="submit" name ="orbtn" value = "확인" /></td>
-</form>
-
-<!-- // #부분에는 로그인 창으로 넘어가는 주소를 넣어야 함 -->
-<form action="LoginPage.jsp" method="get"><td>&nbsp; &nbsp; &nbsp;<input type ="submit" name ="orbtn" value = "뒤로가기" /></td>
-
-</form>
-</tr></table>
+		<tr>
+		<td colspan="2" ><font color="black"><strong>
+		Company Name<td><input type = "text" name = "compname"  size = "10"></td></tr>
+		
+		<tr>
+		<td colspan="2" ><font color="black"><strong>
+		Address<td><input type = "text" name = "compadd"   size = "20" > </td></tr>
+		
+		<tr>
+		<td colspan="2" ><font color="black"><strong>
+		Tel<td><input type = "text" name = "comptel"   size = "20"> </td></tr>
+		
+		<!-- // #부분에는 로그인 창으로 넘어가는 주소를 넣어야 함 -->
+			
+		<table border = "0">	
+			<tr>
+				<br><br>
+				<td>&nbsp; &nbsp;<td colspan="2"><input type ="submit" name ="orbtn" value = "확인" /></td>
+				<td> <a href="LoginPage.jsp"><input type="button" value="뒤로가기"> </a> </td>
+			</tr>
+		</table>
+	</form>
 
 </table>
 
 
 <% 	
-	if(session.getAttribute("compinput") == "1"){
-		if(session.getAttribute("COMP_RESULT") == "ok"){
+	if(session.getAttribute("COMP_ID_CHECK_ACCESS_COUNT") == "1"){
+		if(session.getAttribute("COMP_RESULT") == "OK"){
 			
 			String a = session.getAttribute("INSERT_COMP").toString();
 			out.println("<script type='text/javascript'> okCheck('"+a+"'); </script>");

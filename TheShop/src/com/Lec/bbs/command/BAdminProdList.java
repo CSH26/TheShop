@@ -15,7 +15,7 @@ public class BAdminProdList implements BCommand {
 
 		BDao dao = new BDao();
 		ArrayList<BDto> dtos = dao.AdminProductList();
-		request.setAttribute("ProductList", dtos);
+		request.setAttribute("PRODUCTLIST", dtos);
 	}
 
 }

@@ -10,6 +10,24 @@
 </head>
 <body>
 	<center>
+	<table>
+			<tr>
+				<td align="center" colspan="4"><td><a href="logout.do"><input type="button" value="Log out" style="height:30px; width: 80px;"></a>&nbsp;</td>
+				<td>
+					<form action="Admin_CustomerList.do" method="post">
+						<input type="submit" value="고객 관리"  style="height: 30px; width: 80px;">
+					</form>
+				</td>
+				<td><form action="Admin_CompList.do" method="post">
+						<input type="submit" value="업체 관리"  style="height: 30px; width: 80px;">
+					</form></td>
+
+				<td><form action="report.do" method="post">
+						<input type="submit" value="실적보고" style="height: 30px; width: 80px;">
+					</form></td>
+			</tr>
+		</table>
+		
 		<table>
 			<tr>
 				<td align="center"><img src="main.jpg"></td>
@@ -27,7 +45,7 @@
 							<th>판매가</th>
 							<th>재고</th>
 						</tr>
-						<c:forEach items="${ProductList}" var="dto">
+						<c:forEach items="${PRODUCTLIST}" var="dto">
 							<tr>
 								<td align="center"><a href="productInfo.do?pcode=${dto.pcode}">${dto.pcode}</td>
 								<td align="left">${dto.pname}</td>

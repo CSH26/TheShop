@@ -9,6 +9,7 @@
 <script language="javascript">
     function changeState(){
     	alert("업체 정보가  변경 되었습니다.");
+    	<%session.setAttribute("COMPANY_CHANGE_STATE", "DENY");%>
     }
 </script>
 </head>

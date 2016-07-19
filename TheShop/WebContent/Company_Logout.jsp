@@ -20,7 +20,7 @@
 <script language="javascript">
     function checkIt(){
     	alert("로그 아웃 되었습니다.");
-    	session.invalidate();
+    	<%session.invalidate();%>
       }
 </script>
 </html>

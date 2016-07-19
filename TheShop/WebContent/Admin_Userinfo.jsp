@@ -10,9 +10,25 @@
 </head>
 <body>
 	<center>
+	<table>
+			<tr>
+				<td align="center" colspan="4"><td><a href="logout.do"><input type="button" value="Log out" style="height:30px; width: 80px;"></a>&nbsp;</td>
+				<td><form action="Admin_ProductList.do" method="post">
+						<input type="submit" value="제품 관리" style="height: 30px; width: 80px;">
+					</form></td>
+				<td><form action="Admin_CompList.do" method="post">
+						<input type="submit" value="업체 관리"  style="height: 30px; width: 80px;">
+					</form></td>
+
+				<td><form action="report.do" method="post">
+						<input type="submit" value="실적보고" style="height: 30px; width: 80px;">
+					</form></td>
+			</tr>
+		</table>
+		
 		<table>
 			<tr>
-				<td align="center"><img src="main.jpg"></td>
+				<td align="center"></td>
 			</tr>
 
 			<tr>

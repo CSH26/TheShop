@@ -9,11 +9,9 @@
 </head>
 <body>
 <center>
-<h1> 관리자 페이지(실적보고 )</h1>
-<table>
 
+<table>
          <tr>
-         
             <td align="right">
                <table>
                
@@ -21,19 +19,29 @@
                   </tr>
                   	<tr>
                 	  </tr>
-                	  
+                	 
 
 				<tr> <!-- 로그아웃 누르면 첫 로그인 페이지로 이동! -->
-				<td align="center" colspan="4"><td><a href="logout.do"><input type="button" value="Log out" style="height:30px; width: 65px;"></a>&nbsp;
+				<td align="center" colspan="4"><td><a href="logout.do"><input type="button" value="Log out" style="height:30px; width: 80px;"></a>&nbsp;</td>
 				 <!-- 상품 정보 관리가 뭔지 몰라서 아직 못함 -->
-				<a href="http://192.168.100.42:8080/TheShop/Company_AddProduct.jsp"><input type="button" value="상품정보관리" style="height:30px; width: 110px; "></a></td></tr>
+				<td>
+					<form action="Admin_CustomerList.do" method="post">
+						<input type="submit" value="고객 관리"  style="height: 30px; width: 80px;">
+					</form>
+				</td>
+
+				<td><form action="Admin_CompList.do" method="post">
+						<input type="submit" value="업체 관리"  style="height: 30px; width: 80px;">
+					</form></td>
+
+				<td><form action="Admin_ProductList.do" method="post">
+						<input type="submit" value="제품 관리" style="height: 30px; width: 80px;">
+					</form></td>
+					</tr>
 
   </table>
       	
-      	<form action="compnewitem.do">
-		<td colspan="4"><td><input type="submit" value ="상품 등록" style="height:30px; width: 90px; "></td></tr>
-		</form>
-	
+      	
 	<table border="1">
 		<tr>
 			<td> 유저명 </td>

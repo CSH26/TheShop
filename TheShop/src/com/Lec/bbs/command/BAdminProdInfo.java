@@ -14,7 +14,7 @@ public class BAdminProdInfo implements BCommand {
 		String pcode = request.getParameter("pcode");
 		BDao dao = new BDao();
 		BDto dto = dao.ProductInfo(pcode);
-		request.setAttribute("Prod_Info", dto);
+		request.setAttribute("PROD_INfO", dto);
 
 	}
 

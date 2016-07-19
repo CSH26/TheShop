@@ -9,9 +9,11 @@
 <script language="javascript">
     function changeState(){
     	alert("상품 정보가  변경 되었습니다.");
+    	<% session.setAttribute("COMPANY_PRODUCT_CHANGE_STATE", "DENY");%>
     }
     function deleteState(){
     	alert("상품이 삭제 되었습니다.");
+    	<% session.setAttribute("COMPANY_PRODUCT_DELETE_STATE", "DENY");%>
     }
 </script>
 </head>

@@ -32,16 +32,15 @@
 			<tr>
 				<td colspan="2" width="5"><font color="black" >
 				ID</font></td>
-				<td><input type = "text" align="center" name = "userid" size = "10"></td>
+				<td><input type = "text"  name = "userid" size = "10"></td>
 				
 				<!-- // #부분에는 중복 환인 창으로 넘어가는 주소를 넣어야 함 -->
 				<td>&nbsp; &nbsp; &nbsp;<input type ="submit" value = "중복 확인" /></td> 
 			</tr>
 		</table>
 	</form>
-	
 	<form action="write.do" method="post">
-		<table>
+		<table border = "0">
 			<tr>
 				<td colspan="2" width="5"><font color="black">
 				Name</font></td><td><input type = "text" name = "username"  size = "10"></td>
@@ -63,8 +62,8 @@
 				
 			<!-- // #부분에는 로그인 창으로 넘어가는 주소를 넣어야 함 -->
 			<tr>
-				<td>&nbsp; &nbsp;<td colspan="2"><input type ="submit" name ="orbtn" value = "확인" /></td>
-				<td> <a href=""></a><input type="button" LoginPage.jsp" method="post"e<td>&nbsp; &nbsp; &nbsp;<input type ="submit" name ="orbtn" value = "뒤로가기" /></td></form></td>
+				<td>&nbsp; &nbsp;<td colspan="2"><input type ="submit" name ="orbtn" value = "확인" /></td> 
+				<td> <a href="LoginPage.jsp"><input type="button" value="뒤로가기"> </a> </td>
 			</tr>
 		</table>
 	</form>

@@ -175,7 +175,39 @@ public class BDao {
 		return dto;
 	}
 
+	public int admim_managed_userinfo(String userid, String userpw, String username, String useradd, String usertel){
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		int result_Code = 0;
+		
+		try{
+			connection = dataSource2.getConnection();
+		    String query = "insert into admin_user (userid, userpw, username, useradd, usertel) values (?,?,?,?,?)";
+		    preparedStatement = connection.prepareStatement(query);
+		    preparedStatement.setString(1, userid);
+		    preparedStatement.setString(2, userpw);
+		    preparedStatement.setString(3, username);
+		    preparedStatement.setString(4, useradd);
+		    preparedStatement.setString(5, usertel);
+
+		    result_Code = preparedStatement.executeUpdate();
+		   
+		} 
+		catch (Exception e){
+		    e.printStackTrace();
+		}finally {
+			try{
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+		return result_Code;
+	}
 	public int write(String userid, String userpw, String username, String useradd, String usertel) {
+			
+			int adminResultCode = admim_managed_userinfo(userid, userpw, username, useradd, usertel);
 		  	Connection connection = null;
 			PreparedStatement preparedStatement = null;
 			int result_Code = 0;
@@ -202,6 +234,12 @@ public class BDao {
 				}catch(Exception e){
 					e.printStackTrace();
 				}
+			}
+			
+			if(adminResultCode == 1){
+				System.out.println("관리자 계정에 유저가 등록되었습니다.");
+			}else{
+				System.out.println("관리자 계정에 유저가 등록되지않았습니다.");
 			}
 		return result_Code;
 	}
@@ -252,7 +290,7 @@ public class BDao {
 			PreparedStatement preparedStatement = null;
 			ResultSet resultSet = null;
 			
-			String compTemp = "none";
+			String compTemp = "NONE";
 			try{
 				connection = dataSource2.getConnection();
 				
@@ -360,7 +398,7 @@ public class BDao {
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 		
-		String compTemp = "none";
+		String compTemp = "NONE";
 		try{
 			connection = dataSource2.getConnection();
 			
@@ -527,7 +565,6 @@ public class BDao {
 		return probeans;
 	}
 	
-
 	public void produpdate(String pcode, String pstock, String pnum) {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -595,37 +632,7 @@ public class BDao {
 		else{
 			ADMIN_ACCESS = "WHO ARE YOU?....";
 		}
-		/*Connection connection = null;
-		PreparedStatement preparedStatement = null;
-		ResultSet resultSet = null;
 		
-		String compTemp = "none";
-		try{
-			connection = dataSource.getConnection();
-			
-			String query = "select compcode from companyinfo where compcode = ? and comppw = ?";
-			preparedStatement = connection.prepareStatement(query);
-			preparedStatement.setString(1, compcode);
-			preparedStatement.setString(2, comppw);
-			resultSet = preparedStatement.executeQuery();
-			
-			if(resultSet.next()){
-				compTemp = resultSet.getString("compcode");
-			}
-		}catch(Exception e){
-			e.printStackTrace();
-			
-		}finally {
-			try{
-	
-				if(resultSet != null) resultSet.close();
-				if(preparedStatement != null) preparedStatement.close();
-				if(connection != null) connection.close();
-			}catch(Exception e){
-				e.printStackTrace();
-			}
-		}
-		 */
 		return ADMIN_ACCESS;
 	}
 	
@@ -1099,10 +1106,10 @@ public class BDao {
 		return purbeans;
 	}
 	
-	public void CompModify(String compcode, String compname, String comppw, String compadd, String comptel) {
+	public int CompModify(String compcode, String compname, String comppw, String compadd, String comptel) {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
-
+		int result_Code = 0;
 		try {
 			connection = dataSource2.getConnection();
 			String query = "update companyinfo set compname = ? , comppw = ?, compadd = ?, comptel = ? where compcode = ?";
@@ -1112,7 +1119,7 @@ public class BDao {
 			preparedStatement.setString(3, compadd);
 			preparedStatement.setString(4, comptel);
 			preparedStatement.setString(5, compcode);
-			preparedStatement.executeUpdate();
+			result_Code = preparedStatement.executeUpdate();
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -1126,6 +1133,7 @@ public class BDao {
 				e1.printStackTrace();
 			}
 		}
+		return result_Code;
 	}
 	public int deleteCompanyProduct(String pcode){
 		int result_Code = 0;

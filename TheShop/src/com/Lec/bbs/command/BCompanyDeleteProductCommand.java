@@ -20,10 +20,10 @@ public class BCompanyDeleteProductCommand implements BCommand {
 		int resultCode = dao.deleteCompanyProduct(pcode);
 
 		if(resultCode == 1){
-			request.setAttribute("COMP_PRODUCT_DEL_RESULT", "success");
+			request.setAttribute("COMP_PRODUCT_DEL_RESULT", "SUCCESS");
 		}
 		else{
-			request.setAttribute("COMP_PRODUCT_DEL_RESULT", "fail");
+			request.setAttribute("COMP_PRODUCT_DEL_RESULT", "FAIL");
 		}
 
 	}

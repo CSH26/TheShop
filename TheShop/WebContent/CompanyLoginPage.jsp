@@ -7,6 +7,7 @@
 <script>
 	function emptyComp(){
 			alert("등록되지 않은 업체 이거나 잘못된 비밀번호 입니다.");
+			session.setAttribute("COMP_LOGIN_FLAG","0");
 	}
 </script>
 
@@ -16,16 +17,15 @@
 
 <body>
 
-
 <center>
-<h1> 업체 로그인 페이지 입니다. </h1>
+
 <font face="맑은고딕">
 <table border = "0"> 
 <form action="complogon.do" method="post">
 	<!--  아이디 일치시 메인 페이지로 ㅡ 아이디 불일치시 등록 안 된 아이디라는 알림 떠야 함 -->
 	<br /><br /><br /><br />
 	<tr>
-	<td colspan="4" align="center"><input type="image" src="http://192.168.35.21:8080/TheShop/theshop.png"></td></tr>
+	<td colspan="4" align="center"><input type="image" src="http://localhost:8180/TheShop/Company.png"></td></tr>
 	<tr>
 	<td colspan="4" align="center">&nbsp;</td></tr>
 	<!--  엔터  -->
@@ -43,8 +43,8 @@
 <!--  엔터  -->
 </table>
 <% 
-	if(session.getAttribute("COMP_LOGIN_FLAG") == "2"){
-		if(session.getAttribute("COMP_LOGIN_RESULT") == "unaccessible"){
+	if(session.getAttribute("COMP_LOGIN_FLAG") == "1"){
+		if(session.getAttribute("COMP_LOGIN_RESULT") == "UN_ACCESSIBLE"){
 			out.println("<script type='text/javascript'> emptyComp(); </script>");
 		}
 	}

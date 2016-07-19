@@ -17,8 +17,12 @@ public class BAdminCompModifyCommand implements BCommand {
 		String comptel = request.getParameter("comptel");
 
 		BDao dao = new BDao();
-		dao.CompModify(compcode, compname, comppw, compadd, comptel);
-
+		int ok = dao.CompModify(compcode, compname, comppw, compadd, comptel);
+		if(ok == 1){
+			request.setAttribute("ADMIN_COMP_MODIFY_RESULT", "SUCCESS");
+		}else{
+			request.setAttribute("ADMIN_COMP_MODIFY_RESULT", "FAIL");
+		}
 	}
 
 }

@@ -6,8 +6,38 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+
+<script language="javascript">
+    function sessionId(){
+    	<%
+    		if(session.getAttribute("COMP_CREATE_ITEM_ACCESS_COUNT") == "1"){
+	    		if(session.getAttribute("COMP_CREATE_ITEM_DENY") == "YES"){
+	    			out.println("<script type='text/javascript'> itemcancel(); </script>");
+	    		}
+	    		else{
+	    			out.println("<script type='text/javascript'> createditem(); </script>");
+	    		}
+    		}
+    	%>	
+    }
+    
+    function createditem(){
+    	alert("상품이 등록 되었습니다.");
+    	<%
+    		session.setAttribute("COMP_CREATE_ITEM_ACCESS_COUNT","0"); 
+    	%>	
+    }
+    
+    function itemcancel(){
+    	alert("상품등록에 실패하였습니다.");
+    	<%
+    		session.setAttribute("COMP_CREATE_ITEM_ACCESS_COUNT","0"); 
+    	%>	
+    }
+</script>
+
 </head>
-<body>
+<body onload="sessionId()">
 <center>
 	<h1> 업체의 제품 리스트 </h1>
 	<table>
