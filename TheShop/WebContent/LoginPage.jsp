@@ -7,7 +7,7 @@
 <script>
 	function emptyUser(){
 			alert("등록되지 않은 사용자 이거나 잘못된 비밀번호 입니다.");
-			<%	session.setAttribute("ACCESS_COUNT","0"); %>
+			<%	session.setAttribute("ACCESS_COUNT","0");  // test%>
 	}
 </script>
 
