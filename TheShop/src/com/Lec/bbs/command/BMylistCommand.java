@@ -18,7 +18,7 @@ public class BMylistCommand implements BCommand {
 		BDao dao = new BDao();
 		ArrayList<PurListBean> dtos = dao.mylist(userid);
 		
-		request.setAttribute("mylist", dtos);
+		request.setAttribute("MYLIST", dtos);
 	}
 
 }

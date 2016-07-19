@@ -9,6 +9,7 @@
 <script language="javascript">
     function changeState(){
     	alert("사용자 정보가  변경 되었습니다.");
+    	session.setAttribute("USER_CHANGE_STATE", "NO");
     }
 </script>
 </head>
@@ -24,7 +25,7 @@
 <table border = "0"> 
 <form>
 	
-	<input type="image" src="http://localhost:8080/TeamProj/user.png"><br /><br />
+	<input type="image" src="http://localhost:8180/TheShop/user.png"><br /><br />
 	
 	
 	<font face="맑은고딕"><br />
@@ -38,23 +39,23 @@
 	<table>
 	<tr>
 		<td colspan="2" width="5"><font color="black" ><strong> ID</td>
-		<td><input type = "text" align="center" name = "userid" size = "10" value="${content_view.userid}"></td>
+		<td><input type = "text" align="center" name = "userid" size = "10" value="${CONTENT_VIEW.userid}"></td>
 	</tr>
 	<tr>
 		<td colspan="2" width="5"><font color="black"><strong> Password</td>
-		<td><input type = "text" name = "userpw" size = "10" value = "${content_view.userpw}"></td>
+		<td><input type = "text" name = "userpw" size = "10" value = "${CONTENT_VIEW.userpw}"></td>
 	</tr>
 	<tr>
 		<td colspan="2" width="5"><font color="black"><strong>Name</td>
-		<td><input type = "text" name = "username"  size = "10" value = "${content_view.username}"></td>
+		<td><input type = "text" name = "username"  size = "10" value = "${CONTENT_VIEW.username}"></td>
 	</tr>
 	<tr>
 		<td colspan="2" width="5"><font color="black"><strong>Address</td>
-		<td><input type = "text" name = "useradd" size = "10" value = "${content_view.useradd}"></td>
+		<td><input type = "text" name = "useradd" size = "10" value = "${CONTENT_VIEW.useradd}"></td>
 	</tr>
 	<tr>
 		<td colspan="2" width="5"><font color="black"><strong>Tel</td>
-		<td><input type = "text" name = "usertel"   size = "20" value = "${content_view.usertel}"> </td>
+		<td><input type = "text" name = "usertel"   size = "20" value = "${CONTENT_VIEW.usertel}"> </td>
 	</tr>
 	<tr>
 		<td colspan="2"><input type="submit" value = "수정"></td>  <td colspan="2"><a href="mylist.do"> 돌아가기</a></td>  <td colspan="2"><a href="User_DeletePage.jsp"> 회원 탈퇴</a></td>

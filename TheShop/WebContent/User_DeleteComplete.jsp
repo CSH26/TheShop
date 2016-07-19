@@ -8,15 +8,13 @@
 </head>
 
 <body>
-    <h1>탈퇴 완료 페이지</h1>
-   
-    <%
     
+    <%
         session.invalidate();
 	%>
 
 <form method="post" action="LoginPage.jsp" name="userinput" >
-    <table width="270" border="1" cellspacing="0" cellpadding="5" align="center">
+    <table width="500" border="1" cellspacing="0" cellpadding="5" align="center">
         <tr> 
             <td height="39" align="center">
             <font size="+1" ><b>회원정보가  완전히 삭제되었습니다.</b></font></td>
@@ -24,7 +22,7 @@
         
         <tr>
             <td align="center"> 
-                <p>잘가시오.</p>
+                <p>이용해 주셔서 감사합니다.</p>
                 <meta http-equiv="Refresh" content="5;url=main.jsp" >
             </td>
         </tr>

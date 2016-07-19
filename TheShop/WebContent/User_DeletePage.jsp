@@ -8,6 +8,7 @@
 <script language="javascript">
     function deletefail(){
     	alert("ºñ¹Ð¹øÈ£°¡ ¸ÂÁö ¾Ê½À´Ï´Ù.");
+    	<% session.setAttribute("USER_PASSWORD_MISSMATCH", "NO"); %>
     }
 </script>
 </head>
@@ -18,34 +19,34 @@
     			out.println("<script type='text/javascript'> deletefail(); </script>");
     		}				
  %>   
-    <input type="image" src="http://localhost:8080/TeamProj/user.png"><br /><br />
-	    <font face="ÇÑÄÄ ¹éÁ¦M"><br />    
-    <table valign ="middle">
+    
+	<font face="ÇÑÄÄ ¹éÁ¦M"><br />    
+    
 
     <form action="delete.do" name="deleteform" method="post" onSubmit="return checkIt()">
         <TABLE cellSpacing=1 cellPadding=1 width="260" border=1 align="center" >
-        <TR height="30">
-            <TD colspan="2" align="middle">
-                <font size="+1" ><b>È¸¿ø Å»Åð</b></font>
-            </TD>
-        </TR>
-        
-        <TR height="30">
-            <TD width="110" align=center>Password</TD>
-            <TD width="150" align=center>
-                <INPUT type=password name="userpw"  size="15" >
-            </TD>
-        </TR>
-        
-        <TR height="30">
-            <TD colspan="2" align="middle">
-                <INPUT type="submit" value="Å»Åð" "> 
-                <a href="mylist.do"><input type="button" value="Ãë¼Ò" ></a>
-            </TD>
-        </TR>
+	        <TR height="30">
+	            <TD colspan="2" align="middle">
+	                <font size="+1" ><b>È¸¿ø Å»Åð</b></font>
+	            </TD>
+	        </TR>
+	        
+	        <TR height="30">
+	            <TD width="110" align=center>Password</TD>
+	            <TD width="150" align=center>
+	                <INPUT type=password name="userpw"  size="15" >
+	            </TD>
+	        </TR>
+	        
+	        <TR height="30">
+	            <TD colspan="2" align="middle">
+	                <INPUT type="submit" value="Å»Åð" "> 
+	                <a href="mylist.do"><input type="button" value="Ãë¼Ò" ></a>
+	            </TD>
+	        </TR>
         </TABLE>
     </form>
-        </table>
+       
  </font>
 
 </body>

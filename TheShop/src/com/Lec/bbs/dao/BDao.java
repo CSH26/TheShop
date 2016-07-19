@@ -33,7 +33,6 @@ public class BDao {
 		
 	}
 	
-	
 	public int delete(String userid, String userpw){
 		int result_Code = 0;
 		Connection connection = null;
@@ -137,6 +136,7 @@ public class BDao {
 		return dtos;
 	}
 	
+	// 유저 상세정보 
 	public UserBean contentView(String userid){
 		
 		UserBean dto = null;
@@ -281,13 +281,15 @@ public class BDao {
 		
 			return compTemp;
 	}
+	
+	//등록된 유저인지 체크하는 메서드
 	public String logonCheck(String userid, String userpw){
 		
 	    Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 		
-		String userTemp = "none";
+		String userTemp = "NONE";
 		try{
 			connection = dataSource2.getConnection();
 			
@@ -322,7 +324,7 @@ public class BDao {
 			PreparedStatement preparedStatement = null;
 			ResultSet resultSet = null;
 			
-			String userTemp = "none";
+			String userTemp = "NONE";
 			try{
 				connection = dataSource2.getConnection();
 				
@@ -483,6 +485,7 @@ public class BDao {
 		return proCount;
 	}
 	
+	//모든 상품리스트를 가져오는 메서드
 	public ArrayList<ProductBean> allProductList(){
 		ArrayList<ProductBean> probeans = new ArrayList<ProductBean>();
 	    Connection connection = null;
@@ -632,21 +635,15 @@ public class BDao {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
-		int count = 0;
 		try {
 			connection = dataSource2.getConnection();
 			String query = "select A.*, B.pcost from purchaseinfo A, productinfo B  where A.userid = ? and (A.pcode = B.pcode)";
 				
-			/*String query = "select A.userid, A.pcode , B.pname, B.pcost, A.pnum, A.pdate from purchaseinfo A, "
-					+ "productinfo B where A.userid = ? group by userid";
-			*/
-			
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, userid);
 			resultSet = preparedStatement.executeQuery();
 
 			while (resultSet.next()) {
-				count++;
 				String pcode = resultSet.getString("pcode");
 				String pname = resultSet.getString("pname");
 				String pnum = resultSet.getString("pnum");
@@ -668,7 +665,7 @@ public class BDao {
 				e1.printStackTrace();
 			}
 		}
-		System.out.println(count);
+	
 		return dtos;
 	}
 	

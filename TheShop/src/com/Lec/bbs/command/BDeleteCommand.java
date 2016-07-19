@@ -18,10 +18,10 @@ public class BDeleteCommand implements BCommand {
 		int resultCode = dao.delete(userid, userpw);
 
 		if(resultCode == 1){
-			session.setAttribute("USER_DEL_RESULT", "success");
+			session.setAttribute("USER_DEL_RESULT", "SUCCESS");
 		}
 		else{
-			session.setAttribute("USER_DEL_RESULT", "fail");
+			session.setAttribute("USER_DEL_RESULT", "FAIL");
 		}
 	}
 

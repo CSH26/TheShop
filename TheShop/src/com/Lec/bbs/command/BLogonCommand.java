@@ -9,7 +9,7 @@ import com.Lec.bbs.dao.BDao;
 
 public class BLogonCommand implements BCommand {
 
-
+	// 유저 테이블에 등록된 유저인지 확인
 	@Override
 	public void excute(HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession();

@@ -7,7 +7,7 @@
 <script>
 	function emptyUser(){
 			alert("등록되지 않은 사용자 이거나 잘못된 비밀번호 입니다.");
-			<%	session.setAttribute("ACCESS_COUNT","0");  // test%>
+			<%	session.setAttribute("ACCESS_COUNT","0"); %>
 	}
 </script>
 
@@ -48,7 +48,7 @@
 
 <% 
 	if(session.getAttribute("ACCESS_COUNT") == "1"){
-		if(session.getAttribute("RESULT") == "unaccessible"){
+		if(session.getAttribute("RESULT") == "UN_ACCESSIBLE"){
 			out.println("<script type='text/javascript'> emptyUser(); </script>");
 		}
 	}

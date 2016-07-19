@@ -35,7 +35,7 @@
 				<td><b>일시</td>
 
 			</tr>
-			<c:forEach items="${mylist}" var="PurListBean">
+			<c:forEach items="${MYLIST}" var="PurListBean">
 				<tr>
 					<td>${PurListBean.userid}</td>
 					<td>${PurListBean.pcode}</td>

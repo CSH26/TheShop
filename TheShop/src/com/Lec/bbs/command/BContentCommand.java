@@ -17,7 +17,7 @@ public class BContentCommand implements BCommand {
 		BDao dao = new BDao();
 		UserBean dto = dao.contentView(userid);
 		
-		request.setAttribute("content_view", dto);
+		request.setAttribute("CONTENT_VIEW", dto);
 
 	}
 

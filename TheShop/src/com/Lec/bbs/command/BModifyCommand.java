@@ -15,7 +15,6 @@ public class BModifyCommand implements BCommand {
 		String useradd = request.getParameter("useradd");
 		String usertel = request.getParameter("usertel");
 	
-		
 		BDao dao = new BDao();
 		dao.modify(userid, userpw, username, useradd, usertel);
 

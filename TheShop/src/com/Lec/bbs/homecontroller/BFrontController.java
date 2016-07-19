@@ -44,36 +44,23 @@ import com.Lec.bbs.command.BWriteCommand;
 import com.Lec.bbs.command.BWriteCompCommand;
 import com.Lec.bbs.command.BbuyOKCommand;
 
-/**
- * Servlet implementation class BFrontController
- */
 @WebServlet("*.do")
 public class BFrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public BFrontController() {
         super();
         // TODO Auto-generated constructor stub
     }
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		System.out.println("doGet");
 		actionDo(request, response);
-		
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		System.out.println("doPost");
 		actionDo(request, response);
-		
 	}
 	
 	private void actionDo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -120,13 +107,13 @@ public class BFrontController extends HttpServlet {
 				viewPage = "Error_comp.jsp";
 			}
 			break;
-		case ("/content_view.do"):
-			command = new BContentCommand();  // 커맨드  타입 상속
+		case ("/content_view.do"): // 유저 상세정보 가져오기
+			command = new BContentCommand();  
 			command.excute(request, response);
 			viewPage = "User_Mypage_Modify.jsp";
 			break;
-		case ("/modify.do"):
-			command = new BModifyCommand();  // 커맨드  타입 상속
+		case ("/modify.do"): // 유저 정보 업데이트
+			command = new BModifyCommand();  
 			command.excute(request, response);
 			session.setAttribute("USER_CHANGE_STATE", "YES");
 			viewPage = "User_Mypage_Modify.jsp";
@@ -134,29 +121,29 @@ public class BFrontController extends HttpServlet {
 		case ("/delete.do"):
 			command = new BDeleteCommand();  // 커맨드  타입 상속
 			command.excute(request, response);
-			if(session.getAttribute("USER_DEL_RESULT")=="success"){
+			if(session.getAttribute("USER_DEL_RESULT")=="SUCCESS"){
 				viewPage = "User_DeleteComplete.jsp";
 			}
-			else if(session.getAttribute("USER_DEL_RESULT")=="fail"){
+			else if(session.getAttribute("USER_DEL_RESULT")=="FAIL"){
 				session.setAttribute("USER_PASSWORD_MISSMATCH", "YES");
 				viewPage = "User_DeletePage.jsp";
 			}
 	
 			break;
-		case ("/logon.do"):
-			command = new BLogonCommand();  // 커맨드  타입 상속
+		case ("/logon.do"): // 유저 아이디 검사하기
+ 			command = new BLogonCommand();  
 			command.excute(request, response);
-			if(session.getAttribute("USER_LOGIN_CHECK")=="none"){
+			if(session.getAttribute("USER_LOGIN_CHECK")=="NONE"){
 				viewPage = "LoginPage.jsp";
 				session.setAttribute("ACCESS_COUNT","1");
-				session.setAttribute("RESULT","unaccessible");
+				session.setAttribute("RESULT","UN_ACCESSIBLE");
 			}
 			else{
-				viewPage = "allproductlist.do";
+				viewPage = "allproductlist.do"; // 등록된 유저면 모든 상품리스트를 보여주는 페이지로 이동
 			}
 			break;
-		case ("/allproductlist.do"):
-			command = new BAllProductListCommand();  // 커맨드  타입 상속
+		case ("/allproductlist.do"): // 로그인 성공 후 모든 상품을 보여주는 페이지
+			command = new BAllProductListCommand();  // 상품 리스트 커맨드
 			command.excute(request, response);	
 			viewPage = "User_ProductList.jsp";
 			break;
@@ -183,9 +170,9 @@ public class BFrontController extends HttpServlet {
 		case ("/idcheck.do"):
 			command = new BIdcheckCommand();  // 커맨드  타입 상속
 			command.excute(request, response);
-			if(session.getAttribute("USER_ID_CHECK")=="none"){
-				session.setAttribute("input","1");
-				session.setAttribute("RESULT","ok");
+			if(session.getAttribute("USER_ID_CHECK")=="NONE"){
+				session.setAttribute("USER_ID_CHECK_ACCESS_COUNT","1");
+				session.setAttribute("RESULT","OK");
 				viewPage = "CustomerJoin.jsp";
 			}
 			else{
