@@ -644,7 +644,8 @@ public class BDao {
 		ResultSet resultSet = null;
 		try {
 			connection = dataSource2.getConnection();
-			String query = "select A.*, B.pcost from purchaseinfo A, productinfo B  where A.userid = ? and (A.pcode = B.pcode)";
+			String query = "select A.*, B.pcost from purchaseinfo A, "
+					+ "productinfo B  where A.userid = ? and (A.pcode = B.pcode)";
 				
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, userid);

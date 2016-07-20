@@ -10,7 +10,7 @@
 <br><br><br><br><br><br><br><br>
 <center>
 	<h1>업체 가입이 완료 되었습니다.</h1>
-	<form action="LoginPage.jsp"> 
+	<form action="CompanyLogin.jsp"> 
 		<input type="submit" value="로그인 페이지로 이동">
 	</form>
 </center>

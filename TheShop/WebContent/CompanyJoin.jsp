@@ -5,7 +5,6 @@
 <head>
 <script>
 	function okCheck(a){
-		
 			alert("등록되지 않은 업체입니다. 가입 할 수 있습니다.");
 			document.compform.compcode.value=a;
 			<%session.setAttribute("COMP_ID_CHECK_ACCESS_COUNT","0");%>

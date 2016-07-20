@@ -8,8 +8,9 @@
 
 <script language="javascript">
     function changeState(){
+    	<%session.setAttribute("USER_CHANGE_STATE", "NO");%>
     	alert("사용자 정보가  변경 되었습니다.");
-    	session.setAttribute("USER_CHANGE_STATE", "NO");
+    	
     }
 </script>
 </head>

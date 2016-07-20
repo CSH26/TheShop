@@ -9,7 +9,7 @@
 
 </head>
 <body>
-	<h1>유저의 구매내역 및 개인정보 페이지</h1>
+	
 	<font face="한컴 백제 M">
 
 		<table align="right">
@@ -30,7 +30,6 @@
 				<td><b>아이디</td>
 				<td><b>상품코드</td>
 				<td><b>상품명</td>
-				<td><b>상품가격</td>
 				<td><b>구매수량</td>
 				<td><b>일시</td>
 
@@ -40,7 +39,6 @@
 					<td>${PurListBean.userid}</td>
 					<td>${PurListBean.pcode}</td>
 					<td>${PurListBean.pname}</td>
-					<td>${PurListBean.pcost}</td>
 					<td>${PurListBean.pnum}</td>
 					<td>${PurListBean.pdate}</td>
 				</tr>

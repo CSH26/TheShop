@@ -11,22 +11,7 @@ public class PurListBean {
 	String pcost;
 	Timestamp pdate;
 
-	public final String getPname() {
-		return pname;
-	}
-
-	public final void setPname(String pname) {
-		this.pname = pname;
-	}
-
-	public final String getPcost() {
-		return pcost;
-	}
-
-	public final void setPcost(String pcost) {
-		this.pcost = pcost;
-	}
-
+	
 	public PurListBean(String userid, String pcode, String pname, String pcost, String pnum, Timestamp pdate) {
 		this.userid = userid;
 		this.pcode = pcode;
@@ -74,5 +59,22 @@ public class PurListBean {
 	public void setPdate(Timestamp pdate) {
 		this.pdate = pdate;
 	}
+	
+	public String getPname() {
+		return pname;
+	}
+
+	public void setPname(String pname) {
+		this.pname = pname;
+	}
+
+	public String getPcost() {
+		return pcost;
+	}
+
+	public void setPcost(String pcost) {
+		this.pcost = pcost;
+	}
+	
 
 }
